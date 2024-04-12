@@ -29,7 +29,7 @@ int connectionLayerIncomingVerify(ConnectionLayerIncoming* self, FldInStream* st
     hashValue = mashMurmurHash3WithSeed(stream->p, stream->size - stream->pos, hashValue);
 
     if (hashValue != expectedHashValue) {
-        CLOG_NOTICE("hash not equal, discard packet %04X vs %04X", hashValue, expectedHashValue)
+        CLOG_VERBOSE("hash not equal, discard datagram. hash encountered %04X, but expected %04X", hashValue, expectedHashValue)
         return -1;
     }
 
